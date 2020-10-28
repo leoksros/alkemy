@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Applications') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,17 +38,19 @@
                            <a href="">Applications</a> 
                         </li>
 
-                        @if(Auth::user()->user_type == 'developer')
+                        @auth
+                            @if(Auth::user()->user_type == 'developer')
 
-                            <li class="nav-item  pr-md-2">
-                                <a href="{{route('create_app')}}">Create Application</a> 
-                            </li>                        
+                                <li class="nav-item  pr-md-2">
+                                    <a href="{{route('create_app')}}">Create Application</a> 
+                                </li>                        
 
-                            <li class="nav-item  pr-md-2">
-                                <a href="{{route('create_category')}}">Create Category</a> 
-                            </li>
+                                <li class="nav-item  pr-md-2">
+                                    <a href="{{route('create_category')}}">Create Category</a> 
+                                </li>
 
-                         @endif
+                            @endif
+                         @endauth
 
                         <li class="nav-item  pr-md-2">
                             <div class="dropdown">

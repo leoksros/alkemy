@@ -6,27 +6,21 @@
                 </div>
 
                 <div class="col-6">
-                   
-                  
-                    {{  dev }}
+                         
                         <div class="row align-items-center justify-content-center"> 
                            
                             <div class="col-12"><a href=""><h5 class="card-title">{{ app.name }}  </h5></a> </div>                            
                             <div class="col-12"><p>{{app.description}}</p></div>                            
                             <div class="col-12"><p class="card-text">{{price}}</p></div>                                                                         
-                        
-                        
-                            
-                            <div class="row" v-if="!isDeveloper()">
+                      
+                            <div class="row" v-if=" !isDeveloper() ">
                                 <div class="col-6 col-xs-6" >
                                     <a type="button" v-if="wishStatus() === 'false'" v-on:click.once="createWish" class="btn btn-success">Add to wishlist</a>
-                                    <a type="button" v-else v-on:click.once="cancelWish" class="btn btn-danger">Remove of wishlist</a>
-     
+                                    <a type="button" v-else v-on:click.once="cancelWish" class="btn btn-danger">Remove of wishlist</a>     
                                 </div>                            
                                 <div class="col-6 col-xs-6" >                                
                                     <a type="button"  v-if ="buyStatus() === 'false'" v-on:click.once="createBuy" class="btn btn-success">Buy</a>
                                     <a type="button"  v-else v-on:click.once="cancelBuy" class="btn btn-danger">Cancel buy</a>
-
                                 </div>
                             </div>
 
@@ -73,24 +67,31 @@
                 },
 
                 createBuy: function()
-                {                    
+                {     
+                                  
                     axios.post("/api/buy/"+this.app.id)
+                    window.location = "/apps/"+this.app.id
+                    
 
                 },
 
                 cancelBuy: function()
                 {
                     axios.delete("/api/buy/"+this.app.id)
+                    window.location = "/apps/"+this.app.id
+                    
                 },
 
                 createWish: function()
                 {
                     axios.post('/api/wish/'+this.app.id)
+                    window.location = "/apps/"+this.app.id
                 },
 
                 cancelWish: function()
                 {
                     axios.delete("/api/wish/"+this.app.id)
+                    window.location = "/apps/"+this.app.id
                 },
 
                 buyStatus: function()

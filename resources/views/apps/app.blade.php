@@ -18,7 +18,7 @@
                     </div>
             @endif
                    
-                <application-component  :app="{{ $app }}" :price="{{ $app->price() }}" :buyed=" {{ $buyed }}" :wished="{{ $wished }}"  :dev ="{{Auth::user()->user_type }}"></application-component>
+                <application-component :dev = "{{ $user_type }}"  :app="{{ $app }}" :price="{{ $app->price() }}" :buyed=" {{ $buyed }}" :wished="{{ $wished }}" ></application-component>
                           
         </div>
     </div>

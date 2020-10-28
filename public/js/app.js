@@ -1953,12 +1953,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['dev', 'app', 'price', 'buyed', 'wished'],
@@ -1973,15 +1967,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     createBuy: function createBuy() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/buy/" + this.app.id);
+      window.location = "/apps/" + this.app.id;
     },
     cancelBuy: function cancelBuy() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/buy/" + this.app.id);
+      window.location = "/apps/" + this.app.id;
     },
     createWish: function createWish() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/wish/' + this.app.id);
+      window.location = "/apps/" + this.app.id;
     },
     cancelWish: function cancelWish() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/wish/" + this.app.id);
+      window.location = "/apps/" + this.app.id;
     },
     buyStatus: function buyStatus() {
       if (this.buyed == true) return 'true';else return 'false';
@@ -37589,11 +37587,6 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "col-6" }, [
-      _vm._v(
-        "\n               \n              \n                " +
-          _vm._s(_vm.dev) +
-          "\n                    "
-      ),
       _c(
         "div",
         { staticClass: "row align-items-center justify-content-center" },

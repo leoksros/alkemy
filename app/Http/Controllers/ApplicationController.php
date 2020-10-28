@@ -98,49 +98,71 @@ class ApplicationController extends Controller
        
         $idApp = $app->id;
 
-        if (count(Auth::user()->buyedApps) != 0)
+        if(Auth::check())
         {
-            foreach(Auth::user()->buyedApps as $application)
-            {                
-                
-                if ($application->application_id == $idApp)
-                {
-                    $buyed = 'true';
-                  
-                }
-                else
-                {
-                    $buyed = 'false';
-                 
-                }
-            }
-        }
-        else
-        {
-            $buyed = 'false';
-        }
-        
-        if (count(Auth::user()->wishes) != 0)
-        {
-            foreach(Auth::user()->wishes as $wish)
+
+            if (count(Auth::user()->buyedApps) != 0)
             {
-                
-                if ($wish->application_id == $idApp)
-                {
-                    $wished = 'true';
-                }
-                else
-                {
-                    $wished = 'false';
+                foreach(Auth::user()->buyedApps as $application)
+                {                
+                    
+                    if ($application->application_id == $idApp)
+                    {
+                        $buyed = 'true';
+                    
+                    }
+                    else
+                    {
+                        $buyed = 'false';
+                    
+                    }
                 }
             }
+            else
+            {
+                $buyed = 'false';
+            }
+            
+            if (count(Auth::user()->wishes) != 0)
+            {
+                foreach(Auth::user()->wishes as $wish)
+                {
+                    
+                    if ($wish->application_id == $idApp)
+                    {
+                        $wished = 'true';
+                    }
+                    else
+                    {
+                        $wished = 'false';
+                    }
+                }
+            }
+            else
+            {
+                $wished = 'false';
+            }
+
+            if(Auth::user()->user_type == 'developer')
+            {
+                $user_type = 'developer';
+            }
+            else
+            {
+                $user_type = 'client';
+            }
+            
+            return view('apps.app',compact('app','buyed','wished','user_type'));
+
         }
         else
         {
+            $user_type = 'client';
+            $buyed = 'false';
             $wished = 'false';
+            return view('apps.app',compact('app','buyed','wished','user_type'));
         }
                
-        return view('apps.app',compact('app','buyed','wished'));
 
     }
 
