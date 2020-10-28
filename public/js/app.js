@@ -1955,15 +1955,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['app', 'price', 'buyed', 'wished'],
+  props: ['dev', 'app', 'price', 'buyed', 'wished'],
   data: function data() {
     return {
       app: this.props
     };
   },
   methods: {
+    isDeveloper: function isDeveloper() {
+      if (this.dev == 'developer') return true;else return false;
+    },
     createBuy: function createBuy() {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/buy/" + this.app.id);
     },
@@ -37579,17 +37586,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row bg-white shadow p-4 " }, [
-    _c("div", { staticClass: "col-12 col-sm-6" }, [
-      _c("img", {
-        staticClass: "card-img-top img-fluid",
-        attrs: {
-          src: "../storage/IRzu9SbwtMcJ1FpOioFX2HMEk8Yk2Wt1Wyn3E7cE.png",
-          alt: "Application image"
-        }
-      })
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "col-6" }, [
+      _vm._v(
+        "\n               \n              \n                " +
+          _vm._s(_vm.dev) +
+          "\n                    "
+      ),
       _c(
         "div",
         { staticClass: "row align-items-center justify-content-center" },
@@ -37610,93 +37614,115 @@ var render = function() {
             _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-xs-6" }, [
-            _vm.wishStatus() === "false"
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "button" },
-                    on: {
-                      "~click": function($event) {
-                        return _vm.createWish($event)
+          !_vm.isDeveloper()
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6 col-xs-6" }, [
+                  _vm.wishStatus() === "false"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "button" },
+                          on: {
+                            "~click": function($event) {
+                              return _vm.createWish($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Add to wishlist")]
+                      )
+                    : _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            "~click": function($event) {
+                              return _vm.cancelWish($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Remove of wishlist")]
+                      )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 col-xs-6" }, [
+                  _vm.buyStatus() === "false"
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "button" },
+                          on: {
+                            "~click": function($event) {
+                              return _vm.createBuy($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Buy")]
+                      )
+                    : _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            "~click": function($event) {
+                              return _vm.cancelBuy($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Cancel buy")]
+                      )
+                ])
+              ])
+            : _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6 col-xs-6 " }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-warning",
+                      attrs: {
+                        type: "button",
+                        href: "/apps/edit/" + _vm.app.id
                       }
-                    }
-                  },
-                  [_vm._v("Add to wishlist")]
-                )
-              : _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      "~click": function($event) {
-                        return _vm.cancelWish($event)
+                    },
+                    [_vm._v("Edit ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 col-xs-6" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: {
+                        type: "button",
+                        href: "/apps/disable/" + _vm.app.id
                       }
-                    }
-                  },
-                  [_vm._v("Remove of wishlist")]
-                )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-xs-6" }, [
-            _vm.buyStatus() === "false"
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "button" },
-                    on: {
-                      "~click": function($event) {
-                        return _vm.createBuy($event)
-                      }
-                    }
-                  },
-                  [_vm._v("Buy")]
-                )
-              : _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      "~click": function($event) {
-                        return _vm.cancelBuy($event)
-                      }
-                    }
-                  },
-                  [_vm._v("Cancel buy")]
-                )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-xs-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-warning",
-                attrs: { type: "button", href: "/apps/edit/" + _vm.app.id }
-              },
-              [_vm._v("Edit ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-xs-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-danger",
-                attrs: { type: "button", href: "/apps/disable/" + _vm.app.id }
-              },
-              [_vm._v("Delete")]
-            )
-          ])
+                    },
+                    [_vm._v("Delete")]
+                  )
+                ])
+              ])
         ]
       )
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 col-sm-6" }, [
+      _c("img", {
+        staticClass: "card-img-top img-fluid",
+        attrs: { alt: "Application image" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 

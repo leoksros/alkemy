@@ -48,8 +48,10 @@
             
             
 
+            {{ $apps->links()}}
 
         </div>
+
     </div>
 </div>
 @endsection

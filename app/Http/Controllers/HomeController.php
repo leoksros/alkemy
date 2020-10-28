@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $apps = Application::where('status','=','enable')->get();
+        $apps = Application::where('status','=','enable')->orderBy('created_at', 'desc')->paginate(10);
+
         $title = 'Applications';
         return view('home',compact('apps','title'));
     }

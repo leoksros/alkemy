@@ -54,7 +54,7 @@
                                     <div class="col-md-6">
                                         
                                         <select id="user_type" name="user_type" class="custom-select form-control">                                        
-                                            <option selected>Seleccione una opción..</option>
+                                            
                                             <option value="client">Cliente</option>
                                             <option value="developer">Desarrollador</option>                                    
                                         </select>

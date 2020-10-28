@@ -105,7 +105,7 @@ class UserController extends Controller
 
     public function my_apps()
     {
-        
+
         $purchases = Purchase::where('user_id','=', Auth::user()->id)->get();
         $apps = [];
         
@@ -122,15 +122,11 @@ class UserController extends Controller
 
     public function crafted_apps()
     {
-           
-            
-            $apps = Auth::user()->crafted;
-            
-            $title = "My applications";
-            return view('home',compact('apps','title'));       
-                
+        $apps = Application::where('user_id','=', Auth::user()->id)->paginate(10);     
 
+        $title = "My applications [Developer]";
         
+        return view('home',compact('apps','title'));           
     }
 
     

@@ -34,33 +34,33 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item">
+                        <li class="nav-item  pr-md-2">
                            <a href="">Applications</a> 
                         </li>
 
                         @if(Auth::user()->user_type == 'developer')
-                        <li class="nav-item">
-                            <a href="{{route('create_app')}}">Create Application</a> 
-                         </li>
-                        
 
-                         <li class="nav-item">
-                            <a href="{{route('create_category')}}">Create Category</a> 
-                         </li>
+                            <li class="nav-item  pr-md-2">
+                                <a href="{{route('create_app')}}">Create Application</a> 
+                            </li>                        
+
+                            <li class="nav-item  pr-md-2">
+                                <a href="{{route('create_category')}}">Create Category</a> 
+                            </li>
 
                          @endif
 
-                        <li class="nav-item">
+                        <li class="nav-item  pr-md-2">
                             <div class="dropdown">
                                 <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
-                                  Categories
+                                  Categories ({{ count($categories)}})
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   
                                     @forelse ($categories as $category)
                                         <a class="dropdown-item" href="{{route('show_category',$category)}}">{{$category->name}}</a>
                                     @empty
-                                        No
+                                        Empty
                                     @endforelse
                                 
                                 </div>
@@ -71,7 +71,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <li class="nav-item">
+                        <li class="nav-item  pr-md-2">
                             <form method="GET" action="{{ route('search_app') }}">
                                 @csrf
                                 <div class="input-group mb-3">

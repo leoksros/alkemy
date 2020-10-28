@@ -17,12 +17,9 @@
                         {{ session('no') }}
                     </div>
             @endif
-            
-      
-        <application-component :app="{{ $app }} " :price="{{ $app->price() }}" :buyed=" {{ $buyed }}" :wished="{{ $wished }}" ></application-component>
-                    
-      
-
+                   
+                <application-component  :app="{{ $app }}" :price="{{ $app->price() }}" :buyed=" {{ $buyed }}" :wished="{{ $wished }}"  :dev ="{{Auth::user()->user_type }}"></application-component>
+                          
         </div>
     </div>
 </div>
